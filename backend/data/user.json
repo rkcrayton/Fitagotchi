@@ -1,0 +1,20 @@
+{
+  "raheem": {
+    "user_id": "raheem",
+    "pet": {
+      "name": "BuffDoggo",
+      "health": 100,
+      "happiness": 100,
+      "last_workout_date": "2025-05-20"
+    }
+  },
+  "Raheem": {
+    "user_id": "Raheem",
+    "pet": {
+      "name": "BuffDoggo",
+      "health": 100,
+      "happiness": 100,
+      "last_workout_date": null
+    }
+  }
+}
