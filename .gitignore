@@ -1,0 +1,33 @@
+# macOS junk
+.DS_Store
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Flask env
+.env
+*.sqlite3
+*.log
+
+# iOS / Xcode
+DerivedData/
+*.xcworkspace
+*.xcuserstate
+*.xcuserdata
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/xcshareddata/
+*.xcodeproj/xcshareddata/WorkspaceSettings.xcsettings
+
+# Other IDE
+.idea/
+.vscode/
+
+# Build products
+build/
+*.ipa
+*.app
+*.dSYM/
