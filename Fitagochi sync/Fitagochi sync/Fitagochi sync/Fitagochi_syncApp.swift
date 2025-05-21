@@ -9,15 +9,19 @@ import SwiftUI
 
 @main
 struct FitagotchiSyncApp: App {
+    @StateObject var session = UserSession()
     let healthManager = HealthManager()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(session)
                 .onAppear {
                     healthManager.requestHealthKitAccess()
                     healthManager.fetchTodayWorkoutData { workedOutToday in
-                        healthManager.sendWorkoutStatusToFlask(workedOut: workedOutToday)
+                        if !session.userID.isEmpty {
+                            healthManager.sendWorkoutStatusToFlask(userID: session.userID,workedOut: workedOutToday)
+                        }
                     }
                 }
         }

@@ -41,15 +41,15 @@ class HealthManager {
         healthStore.execute(query)
     }
 
-    func sendWorkoutStatusToFlask(workedOut: Bool) {
-        guard let url = URL(string: "http://192.168.217.164:5050/pet/update") else { return }
+    func sendWorkoutStatusToFlask(userID:String,workedOut: Bool) {
+        guard let url = URL(string: "http://192.168.217.119:5050/pet/update") else { return }
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let body: [String: Any] = [
-            "user_id": "raheem",
+            "user_id": userID,
             "worked_out_today": workedOut
         ]
 
@@ -65,7 +65,7 @@ class HealthManager {
     }
     
     func fetchPetStatusFromFlask(userID:String, completion: @escaping (PetStatus?) -> Void) {
-        guard let url = URL(string: "http://192.168.217.164:5050/pet?user_id=\(userID)") else {
+        guard let url = URL(string: "http://192.168.217.119:5050/pet?user_id=\(userID)") else {
             completion(nil)
             return
         }

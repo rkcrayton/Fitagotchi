@@ -11,12 +11,12 @@ struct ContentView: View {
     @State private var petstatus: PetStatus?
     @State private var isLoading = false
     @State private var userIDInput: String = ""
-    @State private var userID: String = ""
+    @EnvironmentObject var session: UserSession
     let healthmanager = HealthManager()
     
     var body: some View {
         
-        if userID.isEmpty {
+        if session.userID.isEmpty {
             VStack {
                     Text("🐾 Welcome to Fitagotchi")
                         .font(.title)
@@ -27,7 +27,7 @@ struct ContentView: View {
                         .padding()
 
                     Button("Continue") {
-                        userID = userIDInput.trimmingCharacters(in: .whitespacesAndNewlines)
+                        session.userID = userIDInput  .trimmingCharacters(in: .whitespacesAndNewlines)
                     }
                     .padding()
                     .background(Color.blue)
@@ -67,7 +67,7 @@ struct ContentView: View {
     }
     func syncPetStatus() {
         isLoading = true
-        healthmanager.fetchPetStatusFromFlask(userID: userID) { pet in
+        healthmanager.fetchPetStatusFromFlask(userID: session.userID) { pet in
             DispatchQueue.main.async {
                 self.petstatus = pet
                 self.isLoading = false
